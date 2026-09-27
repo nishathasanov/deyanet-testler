@@ -7,8 +7,9 @@
 ======================================================================
  5-Cİ SİNİF TESTLƏRİ – VEB TƏTBİQİN TAM TƏSVİRİ (Claude üçün davam qeydi)
 ======================================================================
-Son yeniləmə: 2026-09-26 (versiya v6.4)
-Onlayn link (Claude artifact): https://claude.ai/artifact/2UbuDYwng3kzT1F5j7CnEp
+Son yeniləmə: 2026-09-27 (versiya v6.5)
+Onlayn sayt (GitHub Pages, tokensiz): https://nishathasanov.github.io/deyanet-testler/
+(Claude artifaktı 2026-09-27-dən İSTİFADƏ OLUNMUR – müəllimin qərarı.)
 Müəllimin e-poçtu (hələlik istifadə olunmur): nishat.hesenov@gmail.com
 
 QEYD CLAUDE ÜÇÜN: Bu fayl yeni söhbətdə sənə verilirsə, əvvəlki söhbəti
@@ -16,19 +17,18 @@ xatırlamırsan. Lazım olan hər şey bu şərhdədir. Hər yeniləmədə bu ş
 yenilə (tarix, kateqoriyalar, əhatə, cavab açarları, dəyişikliklər tarixçəsi).
 İŞ AXINI, KƏSİNTİDƏN SONRA DAVAM və ALƏTLƏR: layihə kökündəki CLAUDE.md və
 DAVAM_ET.md (iş jurnalı). İşə başlamazdan əvvəl DAVAM_ET.md-ni oxu.
-HƏR TASK BİTƏNDƏ MÜTLƏQ (ardıcıllıqla):
+HƏR TASK BİTƏNDƏ MÜTLƏQ (ardıcıllıqla; tam siyahı CLAUDE.md §2.6):
   1) python alatler/tokensiz_nusxe.py → versiya qovluğunda
-     artifakt_ucun_tokensiz.html yaranır. ARTİFAKTA YALNIZ BU FAYL
-     yayımlanır (Artifact publish, url yuxarıda). Lokal HTML-i (tokenli)
-     artifakta YAYIMLAMA.
-  2) KANALA («Deyanet-hazirliq») yalnız HTML FAYLI (tokenli lokal versiya):
+     artifakt_ucun_tokensiz.html (tokensiz nüsxə) yaranır.
+  2) python alatler/sayt_yenile.py → tokensiz nüsxə açıq repo
+     deyanet-testler-ə (GitHub Pages saytı). Artifakt YAYIMLANMIR.
+  3) KANALA («Deyanet-hazirliq») yalnız HTML FAYLI (tokenli lokal versiya):
      python alatler/telegram_gonder.py kanal "qısa qeyd"
-     Kanal mesajında artifakt linki OLMUR (müəllimin tələbi).
-  3) YALNIZ YENİ VERSİYA olanda artifakt linkini BOTUN ŞƏXSİ ÇATINA
-     (müəllimin Deyanet_testler_bot ilə yazışması) göndər:
-     python alatler/telegram_gonder.py artifakt "qısa qeyd"
-  4) cavabda müəllimə nə edildiyini və artifakt linkini yaz.
-  Token və çat ID-ləri telegram_config.json-dadır (artifakta və yaddaşa
+  4) YALNIZ YENİ VERSİYADA sayt linki BOTUN ŞƏXSİ ÇATINA:
+     python alatler/telegram_gonder.py sayt "qısa qeyd"
+  5) DAVAM_ET.md, git commit + push (gizli repo dayanat-tests),
+     versiya/vX.Y budağı.
+  Token və çat ID-ləri telegram_config.json-dadır (sayta və yaddaşa
   YAZMA; lokal HTML-də TG.token üçün istifadə olunur – bölmə 4, «TELEGRAM
   NƏTİCƏ»). Skriptlər təkrar işlədiləndə eyni şeyi ikinci dəfə göndərmir.
 
@@ -131,6 +131,20 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
     mövzulara görə qruplaşdırılmış. PDF DejaVu şrifti ilə (ə, ş, ğ üçün).
     DejaVu kompüterdə yoxdursa, Arial (Windows/Fonts/arial.ttf) olar –
     o da ə, ş, ğ hərflərini göstərir. PDF versiya qovluğuna yazılır.
+  • DİYANƏT İMTAHAN FORMATI (2026-09-27): real 2025-26 sınaqları (IV sinif,
+    MSİ-1…6, ÜSİ-1/2, qəbul; 645 sual + rəsmi açar) layihədə:
+    «2025-2026 sinaqlar/» – ANALIZ.md, movzu_indeksi.md, transkript/, Cavablar/.
+    Hər kateqoriyada keçilən mövzulara uyğun sualları oradan maksimum götür
+    (keçilməyən mövzuya çıxma). Forma payı: mənfi forma («hansı səhvdir/
+    deyil») ~30–35%, nömrəli seçim / «neçəsi doğrudur» ≥10%, xüsusiyyət
+    kartı, cədvəl. RƏSMİ AÇAR HƏMİŞƏ DÜZDÜR (müəllimin qərarı). Fonetika
+    suallarında tələffüzə bax (oxşayır [oxşuyur]).
+  • İNGİLİS DİLİ – İKİDİLLİ SUAL (2026-09-27, K2-dən): sual mətni əvvəl
+    ingiliscə, sonra mötərizədə azərbaycanca; variantlar ingiliscə.
+  • RİYAZİYYAT – AÇIQ SUALLAR (2026-09-27): real sınaqlarda 72–74 açıq
+    (cavab ədəd), 75 uyğunluq. Hər riyaziyyat kateqoriyasında ~8–10 açıq +
+    2–3 uyğunluq sualı. Tətbiqə açıq-cavab sahəsi növbəti riyaziyyat
+    kateqoriyası ilə əlavə olunacaq (hələ yoxdur).
 
 4) İŞLƏMƏ MƏNTİQİ
 –––––––––––––––––––––––––––––––––––
@@ -171,6 +185,14 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
   • «Dayandır» düyməsi: test gedərkən (İmtahanı bitir düyməsinin yanında) və
     pauza ekranında. Təsdiqdən sonra hər şeyi silib başlanğıc ekranına
     qaytarır (resetAll). «Yeni şagird üçün sıfırla» da eyni funksiyanı çağırır.
+  • SÜRƏTLİ NAVİQASİYA (v6.5, müəllimin tələbi): sağ aşağı küncdə sabit
+    düymələr (#nav): ↑ səhifənin əvvəli, «Qaldığım yer · N» – sonuncu cavab
+    verilən suala keçir və onu qısa işıqlandırır (S.last; yoxdursa ən böyük
+    nömrəli cavablandırılmış sual), ↓ səhifənin sonu (İmtahanı bitir).
+    ↑ yuxarıda, ↓ aşağıda gizlənir; «Qaldığım yer» yalnız test gedərkən və
+    ən azı 1 cavab olanda. Pauzada və başlanğıcda düymələr gizlidir. Nəticə
+    ekranında ↑/↓ qalır. JS: navSync, lastQ, goTo. Düymələr 48px (barmaq),
+    prefers-reduced-motion-da animasiyasız, çapda gizli.
   • E-poçt / hesabat göndərmə: müəllimin istəyi ilə hələlik YOXDUR.
     Nəticə ekranında göndərmə bloku, kopyala düyməsi və hesabat mətni
     göstərilmir (JS-də «report» mətni hələ də yaradılır, lazım olsa geri
@@ -185,11 +207,11 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
     sonra göndərilir. Nəticə ekranında status sətri (#tgStatus) görünür.
     TOKEN QAYDASI (müəllimin qərarı, 2026-09-26): token YALNIZ versiyalar/
     qovluğundakı lokal HTML-ə yazılır (bu fayl kanala göndərilir, şagirdlər
-    testi kanaldakı fayldan işləyir). ARTİFAKTA yayımlanan nüsxədə token
+    testi kanaldakı fayldan işləyir). SAYTA (GitHub Pages) gedən nüsxədə token
     BOŞ olmalıdır: alatler/tokensiz_nusxe.py → artifakt_ucun_tokensiz.html
-    yayımlanır. alatler/kateqoriya_elave_et.py TG.token-i config-dən özü
+    → alatler/sayt_yenile.py (artifakt artıq istifadə olunmur). alatler/kateqoriya_elave_et.py TG.token-i config-dən özü
     doldurur. Token boşdursa funksiya tamamilə sönülüdür.
-    Onlayn linkdə (artifact) kənar sorğular bloklana bilər; o halda status
+    Onlayn saytda token olmadığı üçün nəticə göndərilmir; o halda status
     «göndərmək mümkün olmadı» deyir. Fayl brauzerdə açılanda işləyir.
   • İnternetsiz də işləyir (fayl kimi açılanda). Yalnız Google şriftləri
     yüklənmir, sistem şrifti istifadə olunur.
@@ -205,7 +227,8 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
   created:"YYYY-MM-DD", sub:"...", items:[...]} əlavə et. Yeni fənn: SUBJECTS-ə obyekt əlavə et.
   localStorage açarı: "testler5-v5-state" (dəyişsən, köhnə yarımçıq testlər
   itir). Vəziyyət: phase (idle/running/paused/done), subj, cat, name,
-  answers {sualIndeksi: variantIndeksi}, elapsed, runSince, startedAt,
+  answers {sualIndeksi: variantIndeksi}, last (sonuncu cavab verilən sualın
+  indeksi, v6.5), elapsed, runSince, startedAt,
   finishedAt, pauses, pausedMs, pauseSince.
 
 6) DİZAYN
@@ -295,6 +318,10 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
       təsvirləri idi, indi dörd fənni təmsil edir.
   v5.9 Bütün təsdiq pəncərələri öz pəncərəmizlə (#modal / ask) əvəz olundu;
       brauzerin confirm/dialog pəncərələri yayımda bloklana bilir.
+  v6.5 (2026-09-27) Sürətli naviqasiya: səhifənin əvvəli / qaldığım yer /
+      sonu düymələri (bölmə 4). Vəziyyətə «last» sahəsi. Başlıq qeydləri:
+      artifakt ləğv (sayt), Diyanət formatı, ikidilli ingilis, açıq riyaziyyat.
+      Suallar və kateqoriyalar dəyişməyib.
   v6.4 (2026-09-26) «Bütün kateqoriyalar (təkrar)» seçimi siyahıdan çıxarıldı
       (müəllimin qərarı). Suallar və kateqoriyalar dəyişməyib.
   v6.3 (2026-09-26) Tarix K2 (Atropatena + təkrar) və Azərbaycan dili K2
@@ -317,7 +344,7 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
   • Kökdəki 5ci_sinif_testleri.html – ilkin fayl (v5.9), TOXUNULMUR.
   • versiyalar/vX.Y_YYYY-MM-DD/ – hər task üçün yeni qovluq. İçində:
       5ci_sinif_testleri.html (tam son versiya, tokenli – kanal üçün),
-      artifakt_ucun_tokensiz.html (artifakt üçün), cavab açarı (pdf, txt).
+      artifakt_ucun_tokensiz.html (tokensiz – sayt üçün), cavab açarı (pdf, txt).
   • Şəkillər: <fənn>/<tarix> seh N/ (məs. riyaziyyat/2026-09-26 - seh 24/).
   • menbe/<fənn>_<kat>.py – sualların mənbə faylı (o[0] = düzgün cavab).
   • alatler/ – kateqoriya_elave_et.py (yeni kateqoriya → yeni versiya),
@@ -330,7 +357,7 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
   • Mövcud qovluqlar: v5.9_2026-09-20 (tarix + Az. dili), v6.0_2026-09-26
     (+ riyaziyyat k1), v6.1_2026-09-26 (+ Telegram nəticə kodu),
     v6.2_2026-09-26 (+ ingilis dili k1), v6.3_2026-09-26 (+ tarix k2, azdili k2), v6.4_2026-09-26 («Bütün
-    kateqoriyalar» söndürüldü).
+    kateqoriyalar» söndürüldü), v6.5_2026-09-27 (naviqasiya düymələri).
 ======================================================================
 -->
 <title>5-ci sinif testləri</title>
@@ -523,6 +550,19 @@ select.native{display:none!important}
 .modal-box .row{display:flex;gap:8px}
 .modal-box .row button{flex:1;padding:12px}
 .copied{font-size:14px;color:var(--ok);font-weight:600;margin:8px 0 0}
+/* --- v6.5: sürətli naviqasiya (səhifənin əvvəli / qaldığım yer / sonu) ---
+   Sağ aşağı küncdə sabit düymələr; barmaq altında rahat olsun deyə hər biri ən az 48px. */
+.nav{position:fixed;z-index:20;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.nav button{display:flex;align-items:center;justify-content:center;gap:8px;min-width:48px;height:48px;padding:0 14px;border-radius:24px;font-size:15px;
+  background:var(--surface);color:var(--blue);border:1.5px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.18);transition:opacity .2s,transform .2s}
+.nav button svg{flex:none;width:20px;height:20px}
+.q:focus:not(:focus-visible){outline:none}
+.nav .nav-last{background:var(--blue);color:var(--surface);border-color:var(--blue)}
+.nav button.off{opacity:0;transform:translateY(8px);pointer-events:none}
+body.has-nav .wrap{padding-bottom:190px}
+.q.flash{animation:qflash 1.8s ease-out}
+@keyframes qflash{0%,60%{outline:3px solid var(--ochre);outline-offset:3px}100%{outline:3px solid transparent;outline-offset:3px}}
+@media print{.nav{display:none!important}}
 </style>
 </head>
 <body>
@@ -613,6 +653,13 @@ select.native{display:none!important}
   <button class="ghost stop" id="abort">Dayandır</button>
 </div>
 </div>
+
+<!-- v6.5: sürətli naviqasiya. Test gedərkən və nəticə ekranında görünür, pauzada gizlidir. -->
+<nav class="nav hidden" id="nav" aria-label="Səhifədə sürətli keçid">
+  <button type="button" id="navTop" aria-label="Səhifənin əvvəlinə" title="Səhifənin əvvəlinə"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  <button type="button" id="navLast" class="nav-last off" title="Sonuncu işlədiyin suala qayıt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 21V4M6 4h11l-2.5 4L17 12H6"/></svg><span id="navLastTxt">Qaldığım yer</span></button>
+  <button type="button" id="navEnd" aria-label="Səhifənin sonuna" title="Səhifənin sonuna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button>
+</nav>
 
 <!-- Öz təsdiq pəncərəmiz: brauzerin confirm() və dialog pəncərələri
      yayımlanmış səhifədə bloklana bilir, ona görə istifadə olunmur. -->
@@ -708,7 +755,7 @@ const $ = id => document.getElementById(id);
 
 /* ---------- vəziyyət (səhifə yenilənsə də itmir) ---------- */
 let S = null;
-function fresh(){ return {phase:"idle", subj:null, cat:null, name:"", answers:{}, elapsed:0, runSince:null, startedAt:null, finishedAt:null, pauses:0, pausedMs:0, pauseSince:null}; }
+function fresh(){ return {phase:"idle", subj:null, cat:null, name:"", answers:{}, last:null, elapsed:0, runSince:null, startedAt:null, finishedAt:null, pauses:0, pausedMs:0, pauseSince:null}; }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
 function load(){ try{ const v = JSON.parse(localStorage.getItem(KEY)); if (v && v.phase) return v; }catch(e){} return null; }
 
@@ -740,6 +787,7 @@ function progress(){
   const a = answeredCount();
   $("fill").style.width = (a / DATA.length * 100) + "%";
   $("count").textContent = `${a} / ${DATA.length}`;
+  navSync();
 }
 $("quiz").addEventListener("click", e => {
   if (S.phase !== "running") return;
@@ -754,6 +802,7 @@ $("quiz").addEventListener("click", e => {
   const i = +m[1], j = +t.value;
   if (S.answers[i] === j){ t.checked = false; delete S.answers[i]; }   // eyni variant yenidən basıldı: seçim qalxır
   else S.answers[i] = j;
+  S.last = i;   // «Qaldığım yer» düyməsi bu suala aparır (v6.5)
   save(); progress();
 });
 
@@ -773,7 +822,48 @@ function show(phase){
   $("pause").classList.toggle("hidden", !running);
   $("after").classList.toggle("hidden", !done);
   $("result").style.display = done ? "block" : "none";
+  $("nav").classList.toggle("hidden", !(running || done));
+  document.body.classList.toggle("has-nav", running || done);
+  navSync();
 }
+
+/* ---------- sürətli naviqasiya (v6.5) ----------
+   ↑ səhifənin əvvəli · «Qaldığım yer» – sonuncu cavab verilən sual (S.last; yoxdursa ən böyük
+   nömrəli cavablandırılmış sual) · ↓ səhifənin sonu («İmtahanı bitir» düyməsi).
+   ↑ yuxarıda, ↓ aşağıda olanda gizlənir. «Qaldığım yer» yalnız test gedərkən və ən azı bir
+   cavab olanda görünür. Hərəkət azaldılıbsa (prefers-reduced-motion) animasiyasız keçir. */
+function smoothOk(){ return !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches); }
+function lastQ(){
+  if (!S || !DATA.length) return null;
+  if (S.last !== null && S.last !== undefined && S.last < DATA.length) return S.last;
+  const ks = Object.keys(S.answers).map(Number);
+  return ks.length ? Math.max(...ks) : null;
+}
+function navSync(){
+  if (!S || $("nav").classList.contains("hidden")) return;
+  const y = window.scrollY || document.documentElement.scrollTop;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  $("navTop").classList.toggle("off", y < 300);
+  $("navEnd").classList.toggle("off", y > max - 300);
+  const li = S.phase === "running" ? lastQ() : null;
+  const lb = $("navLast");
+  lb.classList.toggle("off", li === null);
+  if (li !== null){ $("navLastTxt").textContent = `Qaldığım yer · ${li + 1}`; lb.setAttribute("aria-label", `Qaldığım yerə keç: sual ${li + 1}`); }
+}
+function goTo(el, block){
+  if (!el) return;
+  el.scrollIntoView({behavior: smoothOk() ? "smooth" : "auto", block: block || "start"});
+}
+$("navTop").onclick = () => window.scrollTo({top: 0, behavior: smoothOk() ? "smooth" : "auto"});
+$("navEnd").onclick = () => window.scrollTo({top: document.documentElement.scrollHeight, behavior: smoothOk() ? "smooth" : "auto"});
+$("navLast").onclick = () => {
+  const i = lastQ(); if (i === null) return;
+  const el = $("q" + i); goTo(el, "center");
+  el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");   // qısa işıqlanma: harada olduğun görünsün
+  el.setAttribute("tabindex", "-1"); el.focus({preventScroll: true});
+};
+window.addEventListener("scroll", navSync, {passive: true});   // yüngüldür: yalnız 3 düymənin sinfi dəyişir
+window.addEventListener("resize", navSync);
 
 $("start").onclick = () => {
   const n = $("name").value.trim();
