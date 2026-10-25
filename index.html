@@ -7,7 +7,7 @@
 ======================================================================
  5-Cİ SİNİF TESTLƏRİ – VEB TƏTBİQİN TAM TƏSVİRİ (Claude üçün davam qeydi)
 ======================================================================
-Son yeniləmə: 2026-10-25 (versiya v6.24)
+Son yeniləmə: 2026-10-25 (versiya v6.25)
 Onlayn sayt (GitHub Pages, tokensiz): https://nishathasanov.github.io/deyanet-testler/
 (Claude artifaktı 2026-09-27-dən İSTİFADƏ OLUNMUR – müəllimin qərarı.)
 Müəllimin e-poçtu (hələlik istifadə olunmur): nishat.hesenov@gmail.com
@@ -358,8 +358,8 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
   • RİYAZİYYAT – AÇIQ SUALLAR (2026-09-27): real sınaqlarda 72–74 açıq
     (cavab ədəd), 75 uyğunluq. Hər riyaziyyat kateqoriyasında ~8–10 açıq +
     2–3 uyğunluq sualı. Açıq-cavab sahəsi v6.6-da əlavə olundu (bölmə 4).
-    AÇIQ SUALDA DA −0.25 CƏRİMƏ (müəllimin qərarı 2026-10-03; real sınaqda
-    açıq suala cərimə yoxdur, amma müəllim belə istədi).
+    AÇIQ SUALDA CƏRİMƏ YOXDUR (müəllimin qərarı 2026-10-25, v6.25-dən; köhnə 2026-10-03
+    «açıq sualda da −0.25» qaydası ləğv edildi) – real sınaqdakı kimi, bütün fənlərdə.
     Mənbə faylında açıq sual: qa(t, mətn, cavab, izah) → {t, q, n, e}.
 
 4) İŞLƏMƏ MƏNTİQİ
@@ -399,7 +399,8 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
     olunur, test PAUZADA açılır, bayırda keçən vaxt test vaxtına əlavə olunur.
   • Seçimi ləğv etmək: eyni variantı yenidən basmaq və ya «Seçimi ləğv et».
   • Bal: düzgün +1, səhv −0.25, boş 0. Toplam bal mənfi OLMUR (min 0).
-    Açıq sualın səhv cavabı da −0.25 (v6.6, müəllimin qərarı).
+    Açıq sualın səhv cavabı bal SİLMİR (v6.25, müəllimin qərarı 2026-10-25): bal = düzgün −
+    0.25 × (səhv QAPALI sual); nəticədə/hesabatda/Telegram-da «açıq sualda N səhv – bal silmir» qeydi.
   • AÇIQ SUAL (v6.6): variant yoxdur, sualın altında mətn sahəsi (.oin,
     inputmode="decimal"). Yalnız rəqəm, vergül, nöqtə, boşluq yazmaq olur.
     Cavab S.answers[i]-də SƏTİR kimi saxlanır (qapalıda ədəd – variant
@@ -663,6 +664,8 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
       təsvirləri idi, indi dörd fənni təmsil edir.
   v5.9 Bütün təsdiq pəncərələri öz pəncərəmizlə (#modal / ask) əvəz olundu;
       brauzerin confirm/dialog pəncərələri yayımda bloklana bilir.
+  v6.25 (2026-10-25) PROQRAM (müəllimin tələbi): açıq sualın səhv cavabı artıq bal silmir (bütün fənlər) – finish() və
+      tgBuild()-də pen = səhv qapalı sual sayı, bal = ok − pen × 0.25; qaydalar qutusu yeniləndi. sinaq_pdf.py qayda mətni də.
   v6.24 (2026-10-25) Qarışıq testlər K2 (100 = riyaziyyat 25 + ingilis 25 + Az. dili 25 + tarix 25 – 23.10 testlərinin
       bütün 36 səhvinə oxşar suallar; yeni qayda: 4 fənn). Az. dili K5 №42 açarı C → D (ulduz 5 hərf). Proqram kodu dəyişməyib.
   v6.23 (2026-10-23) Riyaziyyat K4 (100 – yeni dərs yox: bütün səhvlər + Mövzu 1–9 təkrarı + online dərs uzunluq/sahə
@@ -763,7 +766,8 @@ səhvlərini və hər səhvin izahını görür. Müəllim dərslik səhifələr
     v6.18_2026-10-17 (+ MSİ-1 2020 (orijinal), 96), v6.19_2026-10-17 (sınaq taymeri 150 dəq),
     v6.20_2026-10-17 (+ MSI1-2025, 100), v6.21_2026-10-17 (MSI1-2025 №48, №75 düzəlişi; açıq uyğunluq),
     v6.22_2026-10-17 (MSI1-2025 №16 açarı C → A), v6.23_2026-10-23 (+ riyaziyyat k4, ingilis k4, azdili k5, tarix k8),
-    v6.24_2026-10-25 (+ Qarışıq testlər k2 – 4 fənn × 25; azdili k5 №42 açarı).
+    v6.24_2026-10-25 (+ Qarışıq testlər k2 – 4 fənn × 25; azdili k5 №42 açarı),
+    v6.25_2026-10-25 (açıq sualın səhvi bal silmir).
 ======================================================================
 -->
 <title>5-ci sinif testləri</title>
@@ -1043,7 +1047,7 @@ body.has-nav .wrap{padding-bottom:190px}
       <p class="catinfo">Vaxt geriyə sayılır, bitəndə imtahan avtomatik bitir. Pauza müddəti sayılmır.</p>
     </div>
     <p class="err hidden" id="limitErr">Vaxtı 5–600 dəqiqə arasında yaz.</p>
-    <div class="rules"><strong>Bal hesablanması:</strong> hər düzgün cavab 1 bal. Hər səhv cavab 0.25 bal silir (4 səhv = 1 düzgün cavab). Boş buraxılan sual bal aparmır. Əmin deyilsənsə, seçimi ləğv edib boş saxlaya bilərsən. <strong>Açıq suallarda</strong> (variant yoxdur) cavabı rəqəmlə yazırsan (məs. 4,82 və ya 4.82) – səhv yazılmış açıq cavab da 0.25 bal silir.</div>
+    <div class="rules"><strong>Bal hesablanması:</strong> hər düzgün cavab 1 bal. Hər səhv cavab 0.25 bal silir (4 səhv = 1 düzgün cavab). Boş buraxılan sual bal aparmır. Əmin deyilsənsə, seçimi ləğv edib boş saxlaya bilərsən. <strong>Açıq suallarda</strong> (variant yoxdur) cavabı rəqəmlə yazırsan (məs. 4,82 və ya 4.82) – səhv yazılmış açıq cavab bal SİLMİR (real sınaqdakı kimi).</div>
     <ul>
       <li>«Testə başla» düyməsini basanda suallar açılacaq və vaxt işləməyə başlayacaq.</li>
       <li>Çıxmalı olsan «Pauza» bas: vaxt dayanır, suallar gizlənir.</li>
@@ -1395,7 +1399,7 @@ function finish(){
 }
 function showResult(scroll){
   render();
-  let ok = 0, bad = 0, empty = 0; const wrongDetail = [], wrongList = [], emptyList = [], byTopic = {};
+  let ok = 0, bad = 0, pen = 0, empty = 0; const wrongDetail = [], wrongList = [], emptyList = [], byTopic = {};
   DATA.forEach((it, i) => {
     const box = $("q" + i), labels = box.querySelectorAll(".opt"), sel = S.answers[i];
     byTopic[it.t] = byTopic[it.t] || {ok:0, n:0}; byTopic[it.t].n++;
@@ -1405,11 +1409,12 @@ function showResult(scroll){
     const v = document.createElement("div");
     if (sel === undefined){ empty++; emptyList.push(i+1); box.classList.add("is-empty"); v.className = "verdict empty"; v.textContent = `Cavablandırılmayıb · düzgün cavab: ${ra}`; }
     else if (isRight(it, sel)){ ok++; byTopic[it.t].ok++; box.classList.add("is-ok"); v.className = "verdict ok"; v.textContent = "Düzgün"; }
-    else { bad++; wrongDetail.push({i, sel}); wrongList.push(`${i+1}: ${op ? sel : L[sel]} (düzgün ${ra})`); box.classList.add("is-bad"); if (!op) labels[sel].classList.add("wrong"); v.className = "verdict bad"; v.textContent = `Səhv · sənin cavabın: ${op ? sel : L[sel]}, düzgün cavab: ${ra}`; if (it.e){ const w = document.createElement("p"); w.className = "why"; w.innerHTML = `<b>Niyə?</b> ${esc(it.e)}`; v.appendChild(w); } }
+    else { bad++; if (!op) pen++; wrongDetail.push({i, sel}); wrongList.push(`${i+1}: ${op ? sel : L[sel]} (düzgün ${ra})`); box.classList.add("is-bad"); if (!op) labels[sel].classList.add("wrong"); v.className = "verdict bad"; v.textContent = `Səhv · sənin cavabın: ${op ? sel : L[sel]}, düzgün cavab: ${ra}`; if (it.e){ const w = document.createElement("p"); w.className = "why"; w.innerHTML = `<b>Niyə?</b> ${esc(it.e)}`; v.appendChild(w); } }
     box.appendChild(v);
   });
   $("quiz").classList.add("done");
-  const raw = ok - bad * 0.25, score = Math.max(0, raw);
+  const raw = ok - pen * 0.25, score = Math.max(0, raw);   // v6.25: açıq sualın səhvi bal silmir
+  const openBad = bad - pen, openNote = openBad ? `; açıq sualda ${openBad} səhv – bal silmir` : "";
   const sc = n => (Math.round(n * 100) / 100).toString();
   const p = Math.max(0, Math.round(score / DATA.length * 100)), g = grade(p);
   const date = new Date(S.startedAt).toLocaleDateString("az-AZ");
@@ -1428,7 +1433,7 @@ Pauza: ${S.pauses} dəfə, cəmi ${human(S.pausedMs)}
 Düzgün: ${ok}
 Səhv: ${bad}
 Boş: ${empty}
-Toplam bal: ${sc(score)} / ${DATA.length}  (${ok} − ${bad} × 0.25 = ${sc(raw)}${raw < 0 ? ", mənfi olmur → 0" : ""})
+Toplam bal: ${sc(score)} / ${DATA.length}  (${ok} − ${pen} × 0.25 = ${sc(raw)}${raw < 0 ? ", mənfi olmur → 0" : ""}${openNote})
 Faiz: ${p}% · təxmini qiymət: ${g}
 
 Mövzular üzrə:
@@ -1448,7 +1453,7 @@ ${emptyList.length ? emptyList.join(", ") : "yoxdur"}`;
       <div class="stat s-bad"><b>${bad}</b><span>səhv</span></div>
       <div class="stat s-empty"><b>${empty}</b><span>boş</span></div>
     </div>
-    <div class="total"><span>Toplam bal</span><b>${sc(score)} / ${DATA.length}</b><span>${ok} düzgün − ${bad} səhv × 0.25 = ${sc(raw)}${raw < 0 ? " → mənfi bal olmur, 0" : ""}</span></div>
+    <div class="total"><span>Toplam bal</span><b>${sc(score)} / ${DATA.length}</b><span>${ok} düzgün − ${pen} səhv × 0.25 = ${sc(raw)}${raw < 0 ? " → mənfi bal olmur, 0" : ""}${openNote}</span></div>
     <p class="score">Faiz: <strong>${p}%</strong> · təxmini qiymət: <strong>${g}</strong></p>
     <div class="review">
       <h3>Səhv cavablar (${bad})</h3>
@@ -1521,14 +1526,15 @@ function tgSave(){ try{ localStorage.setItem(TGQ, JSON.stringify(tgQueue)); }cat
 let tgQueue = tgLoad(), tgBusy = false, tgBlocked = false, tgTimer = null;
 function tgText(s){ return plain(s).replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&amp;/g,"&"); }
 function tgBuild(){
-  let ok = 0, bad = 0, empty = 0; const wrong = [], emptyN = [], byTopic = {};
+  let ok = 0, bad = 0, pen = 0, empty = 0; const wrong = [], emptyN = [], byTopic = {};
   DATA.forEach((it, i) => {
     const sel = S.answers[i], t = byTopic[it.t] = byTopic[it.t] || {ok:0, n:0}; t.n++;
     if (sel === undefined){ empty++; emptyN.push(i+1); }
     else if (isRight(it, sel)){ ok++; t.ok++; }
-    else { bad++; wrong.push(i); }
+    else { bad++; if (!isOpen(it)) pen++; wrong.push(i); }
   });
-  const raw = ok - bad * 0.25, score = Math.max(0, raw), sc = n => (Math.round(n * 100) / 100).toString();
+  const openBad = bad - pen, openNote = openBad ? `; açıq sualda ${openBad} səhv – bal silmir` : "";
+  const raw = ok - pen * 0.25, score = Math.max(0, raw), sc = n => (Math.round(n * 100) / 100).toString();
   const p = Math.max(0, Math.round(score / DATA.length * 100));
   const head = [
     "📋 TEST NƏTİCƏSİ",
@@ -1541,7 +1547,7 @@ function tgBuild(){
     "",
     `Tapşırıq sayı: ${DATA.length}`,
     `✅ Düzgün: ${ok}   ❌ Səhv: ${bad}   ⚪ Boş: ${empty}`,
-    `🎯 Bal: ${sc(score)} / ${DATA.length}  (${ok} − ${bad} × 0.25 = ${sc(raw)}${raw < 0 ? ", mənfi olmur → 0" : ""})`,
+    `🎯 Bal: ${sc(score)} / ${DATA.length}  (${ok} − ${pen} × 0.25 = ${sc(raw)}${raw < 0 ? ", mənfi olmur → 0" : ""}${openNote})`,
     `📈 Faiz: ${p}% · təxmini qiymət: ${grade(p)}`
   ].filter(x => x !== null).join("\n");
   const blocks = [head, "Mövzular üzrə:\n" + Object.entries(byTopic).map(([t, x]) => `• ${t}: ${x.ok}/${x.n}`).join("\n")];
