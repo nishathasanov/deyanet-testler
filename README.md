@@ -2,4 +2,4 @@
 
 Onlayn: https://nishathasanov.github.io/deyanet-testler/
 
-Versiya: v6.37. Bu repo avtomatik yenilənir (əsas layihə gizli repodadır).
+Versiya: v6.38. Bu repo avtomatik yenilənir (əsas layihə gizli repodadır).
